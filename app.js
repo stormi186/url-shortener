@@ -10,9 +10,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
-var url = "mongodb://stormi186:1234brzina@ds215338.mlab.com:15338/heroku_rldsc67h";
-
-mongoose.connect(url, { useNewUrlParser: true });
+mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true });
 
 app.use(express.static(__dirname + '/public'));
 
