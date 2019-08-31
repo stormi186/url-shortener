@@ -5,12 +5,14 @@ const mongoose = require('mongoose');
 const shortUrl = require('./models/shortUrl');
 var dotenv = require('dotenv');
 dotenv.config();
+var url = process.env.MONGODB_URI;
+console.log(`Your port is ${process.env.MONGODB_URI}`);
 
 const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
-mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true });
+mongoose.connect(url, { useNewUrlParser: true });
 
 app.use(express.static(__dirname + '/public'));
 
